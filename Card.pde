@@ -23,12 +23,12 @@ public class Card{
   
   public void renderCard(){
     rect(xPos, yPos, 80, 80);
-    //fill(255);
+    fill(255);
   }
   
   public void updateCard(){
     
-    /*
+    //*
     
     switch(groupId){
 
