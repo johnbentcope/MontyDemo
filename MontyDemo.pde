@@ -1,7 +1,7 @@
-// Gaudnek
-
 final color WHITE = color(255,255,255,255);
-final color BLACK = color(  25,  10,  18,255);
+final color BLACK = color(  0,  0,  0,255);
+
+final boolean DEBUG = false;
 
 DeckOfCards deck;
 
@@ -12,6 +12,7 @@ void setup(){
   noStroke();
   stroke(WHITE);
   strokeWeight(14);
+  fill(BLACK);
   
 }
 

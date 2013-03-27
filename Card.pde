@@ -10,6 +10,8 @@ public class Card{
   
   private float xPos;
   private float yPos;
+  
+  private float speed = .9;
 
   // Four ids total
   // Used for identifying which cards need to move where
@@ -30,26 +32,47 @@ public class Card{
     rect(xPos, yPos, 80, 80);
   }
   
-  public void updateCard(){
-    
+  
+  
+  public void updateCard(int selection){
+    switch(selection){
+      case 0:
+        directSlideClockwise();
+        break;
+        
+      default:
+        break;
+      
+    }
+  }
+
+  private void directSlideClockwise(){  
     //*
     
     switch(groupId){
 
       case 0:
-        fill(255, 0, 0);
+        if (DEBUG) fill(255, 0, 0);
+        xPos+=speed;
+        yPos+=speed;
         break;
       
       case 1:
-        fill( 0, 0, 255);
+        if (DEBUG) fill( 0, 0, 255);
+        xPos-=speed;
+        yPos+=speed;
         break;
         
       case 2:
-        fill( 0, 255, 0);
+        if (DEBUG) fill( 0, 255, 0);
+        xPos-=speed;
+        yPos-=speed;
         break;
       
       case 3:
-        fill(0);
+        if (DEBUG) fill(0);
+        xPos+=speed;
+        yPos-=speed;
         break;
       
       default:

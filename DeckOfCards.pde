@@ -1,21 +1,5 @@
 ArrayList theDeck;
 
-/*
- *
- * \trust
- commonality
- competency
- credibility - production bible
- 
- zig zeegler - pre answer questions
- imagination tree
-  - 
-  
- object of pitch - get them to say no so you can find their need
- *
- *
- */
-
 public class DeckOfCards{
   
   private int xSpacing = 100;
@@ -89,13 +73,9 @@ public class DeckOfCards{
   public void runIt(){
     for ( int i = 0 ; i < theDeck.size() ; i++ ){
       Card card = (Card) theDeck.get(i);
-      card.updateCard();
+      card.updateCard(0);
       card.renderCard();
     }
-  }
-  
-  public void iGuessIllHaveAMethodHereToo(float whatever, int fuckall){
-    whatever += fuckall;
   }
   
 }
