@@ -21,8 +21,8 @@ public class DeckOfCards{
   private int xSpacing = 100;
   private int ySpacing = 100;
   
-  private int xOffset = 50;
-  private int yOffset = 50;
+  private int xOffset = 100;
+  private int yOffset = 100;
   
   public DeckOfCards(){
     

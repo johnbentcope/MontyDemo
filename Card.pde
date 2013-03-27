@@ -1,3 +1,8 @@
+/* 
+ * 
+ * 
+ */
+
 public class Card{
   
   private int xHome;
@@ -23,7 +28,6 @@ public class Card{
   
   public void renderCard(){
     rect(xPos, yPos, 80, 80);
-    fill(255);
   }
   
   public void updateCard(){
@@ -42,6 +46,10 @@ public class Card{
         
       case 2:
         fill( 0, 255, 0);
+        break;
+      
+      case 3:
+        fill(0);
         break;
       
       default:

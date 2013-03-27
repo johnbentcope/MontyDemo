@@ -1,5 +1,8 @@
 // Gaudnek
 
+final color WHITE = color(255,255,255,255);
+final color BLACK = color(  25,  10,  18,255);
+
 DeckOfCards deck;
 
 void setup(){
@@ -7,14 +10,13 @@ void setup(){
   rectMode(CENTER);
   deck = new DeckOfCards();
   noStroke();
-  stroke(255);
+  stroke(WHITE);
   strokeWeight(14);
-  fill(0);
   
 }
 
 void draw(){
-  background(0);
+  background(BLACK);
   
   //background(205);
   deck.runIt();
