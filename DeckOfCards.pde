@@ -12,10 +12,14 @@ public class DeckOfCards{
   // Spacing for grid positions
   private int xSpacing = 100;
   private int ySpacing = 100;
+  //private int xSpacing = 50;
+  //private int ySpacing = 50;
   
   // Top-left offsets for grid placement
   private int xOffset = -50;
   private int yOffset = -50;
+  //private int xOffset = -25;
+  //private int yOffset = -25;
   
   public DeckOfCards(){
     
@@ -25,7 +29,7 @@ public class DeckOfCards{
 
     
   }
-  
+
   // Instantializeiate all of the Cards in the manager
   private void fillDeck(ArrayList deck){
     
