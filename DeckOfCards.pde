@@ -1,27 +1,52 @@
+/*
+ * Particle manager
+ *
+ * johnbentcope - March 2013
+ *
+ */
+
 ArrayList theDeck;
 
 public class DeckOfCards{
   
+  // Spacing for grid positions
   private int xSpacing = 100;
   private int ySpacing = 100;
   
-  private int xOffset = 100;
-  private int yOffset = 100;
+  // Top-left offsets for grid placement
+  private int xOffset = -50;
+  private int yOffset = -50;
   
   public DeckOfCards(){
     
     theDeck = new ArrayList();
     
+    fillDeck(theDeck);
+
+    
+  }
+  
+  // Instantializeiate all of the Cards in the manager
+  private void fillDeck(ArrayList deck){
+    
     for ( int i = 0; i < 11; i++ ) {
+      
       for ( int j = 0; j < 11; j++ ) {
+        
+        // When i%2 != j%2, it creates a checkerboard grid,
+        //   only placing a particle in every other square
         if ( i%2 != j%2 ) {
-          theDeck.add(new Card(xOffset+(xSpacing*i), yOffset+(ySpacing*j), getGroupId(i,j)));
+          
+          deck.add( new Card( xOffset+(xSpacing*i), yOffset+(ySpacing*j), getGroupId(i,j), xSpacing, ySpacing ) );
+
         }
         
       }
+    
     }
   }
   
+  // This is a mess and I'm sorry. Someone with a math degree should refactor this
   private int getGroupId(int i, int j){
     short groupId = 0;
     
@@ -70,6 +95,7 @@ public class DeckOfCards{
     return groupId;
   }
   
+  // Gets Card out of the ArrayList and updates its position and draws it to the screen
   public void runIt(){
     for ( int i = 0 ; i < theDeck.size() ; i++ ){
       Card card = (Card) theDeck.get(i);
