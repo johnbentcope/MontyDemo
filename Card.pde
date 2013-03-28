@@ -20,7 +20,7 @@ public class Card {
   private int yTarget;
 
   // Increment/decrement rate for motion
-  private float speed = 2;
+  private float speed = 1.88;
 
   // Four ids total
   // Used for identifying which cards need to move where
@@ -53,13 +53,18 @@ public class Card {
 
   // Animation pattern selector
   public void updateCard(int selection) {
+    loopNumber = 0;
     switch(selection) {
-    case 0:
-      directSlide(patternDirection);
-      break;
-
-    default:
-      break;
+      case 0:
+        directSlide(patternDirection);
+        break;
+        
+      case 1:
+        diagonalDisplacement(patternDirection);
+        break;
+  
+      default:
+        break;
     }
   }
 
@@ -73,37 +78,74 @@ public class Card {
     fill(0, 20);
 
     switch(groupId) {
-    case 0:
-      if (DEBUG) fill(255, 0, 0);
-      if (direction) xPos+=speed; else xPos-=speed;
-      yPos+=speed;
-      break;
-
-    case 1:
-      if (DEBUG) fill( 0, 0, 255);
-      xPos-=speed;
-      if (direction) yPos+=speed; else yPos-=speed;
-      break;
-
-    case 2:
-      if (DEBUG) fill( 0, 255, 0);
-      if (direction) xPos-=speed; else xPos+=speed;
-      yPos-=speed;
-      break;
-
-    case 3:
-      if (DEBUG) fill(0);
-      xPos+=speed;
-      if (direction) yPos-=speed; else yPos+=speed;
-      break;
-
-    default:
-      break;
+      case 0:
+        if (DEBUG) fill(255, 0, 0);
+        if (direction) xPos+=speed; else xPos-=speed;
+        yPos+=speed;
+        break;
+  
+      case 1:
+        if (DEBUG) fill( 0, 0, 255);
+        xPos-=speed;
+        if (direction) yPos+=speed; else yPos-=speed;
+        break;
+  
+      case 2:
+        if (DEBUG) fill( 0, 255, 0);
+        if (direction) xPos-=speed; else xPos+=speed;
+        yPos-=speed;
+        break;
+  
+      case 3:
+        if (DEBUG) fill(0);
+        xPos+=speed;
+        if (direction) yPos-=speed; else yPos+=speed;
+        break;
+  
+      default:
+        break;
     }
 
     checkForPositionReset();
   }
+  
+  private void diagonalDisplacement(boolean direction){
+    
+    // if direction is false, slope is negative
+    // if true, slope is positive
+    
+    switch(groupId) {
+      case 0:
+        if (DEBUG) fill(255, 0, 0);
+        if (direction) xPos += speed; else xPos -= speed;
+        yPos += speed;
+        break;
+  
+      case 1:
+        if (DEBUG) fill( 0, 0, 255);
+        xPos += speed;
+        if (direction) yPos += speed; else yPos -= speed;
+        break;
+  
+      case 2:
+        if (DEBUG) fill( 0, 255, 0);
+        if (direction) xPos -= speed; else xPos += speed;
+        yPos -= speed;
+        break;
+  
+      case 3:
+        if (DEBUG) fill(0);
+        xPos -= speed;
+        if (direction) yPos -= speed; else yPos += speed;
+        break;
+  
+      default:
+        break;
+    }
 
+    checkForPositionReset();
+    
+  }
 
   private void checkForPositionReset() {
 
@@ -113,14 +155,13 @@ public class Card {
       resetPosition();
 
       loopNumber++;
-      if (loopNumber%4 == 0) patternDirection = !patternDirection;
-      if (loopNumber%8 == 0) speed = -1*speed;
+      if (loopNumber%1 == 0) patternDirection = !patternDirection;
+      if (loopNumber%1 == 0) speed = -1*speed;
       //if (loopNumber == 4 && MAKE_GIF) {
       //  exit();
       //}
 
       //speed = -1*speed;
-      println(patternDirection);
     }
   }
 

@@ -99,11 +99,15 @@ public class DeckOfCards{
     return groupId;
   }
   
+  public void updatePattern(){
+    
+  }
+  
   // Gets Card out of the ArrayList and updates its position and draws it to the screen
-  public void runIt(){
+  public void runIt(int selector){
     for ( int i = 0 ; i < theDeck.size() ; i++ ){
       Card card = (Card) theDeck.get(i);
-      card.updateCard(0);
+      card.updateCard(selector);
       card.renderCard();
     }
   }

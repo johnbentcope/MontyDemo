@@ -18,6 +18,8 @@ final color BLACK = color(  0,  0,  0,255);
 final boolean DEBUG = false;
 final boolean MAKE_GIF = false;
 
+int patternSelector = 0;
+
 DeckOfCards deck;
 
 void setup(){
@@ -36,8 +38,22 @@ void draw(){
   //background(BLACK);
   fill(0,0,0,5);
   rect(width/2, height/2, width+20, height+20);
-  deck.runIt();
+  deck.runIt(0);
   if (frameCount > 100 && frameCount <= 200 && MAKE_GIF) {
     saveFrame();
+  }
+}
+
+void keyPressed(){
+  switch(key){
+    case 'a':
+      patternSelector = 0;
+      break;
+    case 's':
+      patternSelector = 1;
+      break;
+    default:
+      patternSelector = 0;
+      break;
   }
 }
